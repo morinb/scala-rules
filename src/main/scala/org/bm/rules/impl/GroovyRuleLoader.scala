@@ -35,7 +35,7 @@ class GroovyRuleLoader(groovyClassDirectories: List[File]) extends RuleLoader {
       groovyClassDirectory <- groovyClassDirectories
       groovyScript <- groovyClassDirectory.listFiles(new FileFilter {
         override def accept(pathname: File): Boolean = pathname != null && pathname.isFile && pathname.getName.endsWith(".groovy")
-      }).toList
+      })
       groovyClass = groovyClassLoader.parseClass(groovyScript).newInstance()
       if (groovyClass match {
         case r: Rule => true;
